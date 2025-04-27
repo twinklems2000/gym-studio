@@ -7,4 +7,4 @@
 <!-- one for next js app version 
 second for basic html css version -->
 
-<!-- To run the next js app go to nextjs-version directory , intall all the dependency and run that app using command -- npm run dev -->
+<!-- To run the next js app go to nextjs-version directory , intall all the dependency and run that app using command - npm run dev -->
