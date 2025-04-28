@@ -1,6 +1,5 @@
 "use client";
 
-import NewsletterForm from "@/components/NewsletterForm";
 import { fitnessData, trainerData } from "@/utills/constant";
 import {
   Box,
@@ -12,7 +11,9 @@ import {
   CardMedia,
 } from "@mui/material";
 import { motion } from "framer-motion"; // Import Framer Motion
-import { useEffect } from "react";
+import { lazy, Suspense } from "react";
+
+const LazyNewsletterForm = lazy(() => import("@/components/NewsletterForm"));
 
 const Home = () => {
   return (
@@ -230,14 +231,16 @@ const Home = () => {
       </Box>
 
       {/* Newsletter Sign-up Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
-      >
-        <NewsletterForm />
-      </motion.div>
+      <Suspense fallback={<Typography>Loading Newsletter...</Typography>}>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          <LazyNewsletterForm />
+        </motion.div>
+      </Suspense>
     </>
   );
 };
