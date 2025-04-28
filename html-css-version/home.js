@@ -60,12 +60,12 @@ trainerData.forEach((trainer, index) => {
 });
 
 // Intersection Observer for Animations
-const observer = new IntersectionObserver(
+const observerHome = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
+        observerHome.unobserve(entry.target);
       }
     });
   },
@@ -75,5 +75,5 @@ const observer = new IntersectionObserver(
 document
   .querySelectorAll(".animate, .animate-scale, .animate-slide-right")
   .forEach((el) => {
-    observer.observe(el);
+    observerHome.observe(el);
   });
