@@ -3,6 +3,7 @@
 import { Box, TextField, Typography, IconButton } from "@mui/material";
 import { useState } from 'react';
 import SendIcon from '@mui/icons-material/Send';
+import { toastService } from "@/utills/config";
 
 
 const NewsletterForm = () => {
@@ -10,8 +11,8 @@ const NewsletterForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Newsletter subscription submitted:", email);
-    setEmail(''); // Clear the input after submission
+    setEmail(''); 
+    toastService.success("Newsletter subscription submitted");
   };
 
   return (
@@ -23,7 +24,7 @@ const NewsletterForm = () => {
         sx={{
           fontSize: { xs: '1.8rem', md: '2.5rem' },
           fontWeight: 'bold',
-          color: '#1A237E', // Dark blue to match the design
+          color: '#1A237E', 
         }}
       >
         Choose the best plan according to your choice
@@ -34,7 +35,7 @@ const NewsletterForm = () => {
         variant="body1"
         sx={{
           mb: 3,
-          color: '#666', // Lighter gray color for the description
+          color: '#666',
           fontSize: { xs: '0.9rem', md: '1rem' },
           maxWidth: { xs: '100%', md: '500px' },
         }}
@@ -50,11 +51,13 @@ const NewsletterForm = () => {
           display: 'flex',
           alignItems: 'center',
           maxWidth: { xs: '100%', md: '400px' },
+          background: '#1A2A6C',
+          borderRadius: '4px',
         }}
       >
         <TextField
           placeholder="Enter email"
-          variant="standard" // Use standard variant to remove default borders
+          variant="standard" 
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -62,35 +65,36 @@ const NewsletterForm = () => {
           sx={{
             flexGrow: 1,
             mr: 1,
+            px: 1,
             '& .MuiInputBase-input': {
               border: 'none',
-              borderBottom: '2px solid #1A237E', // Blue underline to match the design
+              borderBottom: '2px solid #1A237E', 
               borderRadius: 0,
               padding: '8px 0',
               fontSize: { xs: '0.9rem', md: '1rem' },
-              color: '#1A237E',
+              color: '#ffffff',
             },
             '& .MuiInput-underline:before': {
-              borderBottom: 'none', // Remove default underline
+              borderBottom: 'none', 
             },
             '& .MuiInput-underline:after': {
-              borderBottom: 'none', // Remove default focus underline
+              borderBottom: 'none', 
             },
             '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
-              borderBottom: 'none', // Remove hover underline
+              borderBottom: 'none', 
             },
           }}
         />
         <IconButton
           type="submit"
           sx={{
-            backgroundColor: '#D32F2F', // Red background for the arrow button
+            backgroundColor: '#D32F2F', 
             color: '#fff',
             borderRadius: '4px',
             width: 40,
             height: 40,
             '&:hover': {
-              backgroundColor: '#B71C1C', // Darker red on hover
+              backgroundColor: '#B71C1C', 
             },
           }}
         >

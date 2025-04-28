@@ -1,5 +1,6 @@
 "use client";
 
+import { toastService } from "@/utills/config";
 import { fitnessData, trainerData } from "@/utills/constant";
 import {
   Box,
@@ -10,12 +11,32 @@ import {
   CardContent,
   CardMedia,
 } from "@mui/material";
-import { motion } from "framer-motion"; // Import Framer Motion
+import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import { lazy, Suspense } from "react";
 
 const LazyNewsletterForm = lazy(() => import("@/components/NewsletterForm"));
 
+// Animation Variants for the new section
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+};
+
+const fadeInLeft = {
+  hidden: { opacity: 0, x: -50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } },
+};
+
+const fadeInRight = {
+  hidden: { opacity: 0, x: 50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } },
+};
+
 const Home = () => {
+  const router = useRouter();
+
   return (
     <>
       {/* Hero Section */}
@@ -32,7 +53,7 @@ const Home = () => {
           justifyContent: "center",
           color: "#fff",
           textAlign: "center",
-          overflow: "hidden", // Prevent video overflow
+          overflow: "hidden",
         }}
       >
         <motion.div
@@ -59,6 +80,9 @@ const Home = () => {
               color: "#fff",
               fontSize: "1.2rem",
             }}
+            onClick={() =>
+              toastService.success("Congratulations on joining 🎉 ")
+            }
           >
             Join Now
           </Button>
@@ -68,57 +92,220 @@ const Home = () => {
           autoPlay
           loop
           muted
-          playsInline // Added to ensure playback on mobile devices
+          playsInline
           sx={{
             position: "absolute",
             top: 0,
             left: 0,
             width: "100%",
-            height: "100%",
+            height: "600px",
             objectFit: "cover",
             opacity: 0.5,
-            zIndex: 0, // Ensure video is behind content
+            zIndex: 0,
           }}
         >
-          <source src="/assets/banner_video.mp4" type="video/mp4" />
-          {/* Fallback for browsers that don't support video */}
+          <source src="/assets/banner_video_2.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </Box>
       </motion.div>
 
-      {/* Overview of Fitness Programs */}
-      <Box sx={{ py: 6, px: 2, backgroundColor: "#fff" }}>
-        <Typography variant="h4" align="center" gutterBottom>
-          Welcome to our JOSY Health Care Service
-        </Typography>
-        <Grid container spacing={3} justifyContent="center">
-          {fitnessData.map((program, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2, duration: 0.8 }}
-                viewport={{ once: true }}
+      {/* Welcome to Josy Health Service Section */}
+      <Box
+        sx={{
+          py: { xs: 4, md: 6 },
+          px: { xs: 2, md: 4 },
+          backgroundColor: "#fff",
+        }}
+      >
+        <Grid
+          container
+          spacing={3}
+          alignItems="center"
+          justifyContent="center"
+          sx={{ flexWrap: { xs: "wrap", md: "nowrap" } }}
+        >
+          <Grid
+            item
+            xs={12}
+            md={6}
+            sx={{
+              display: { xs: "none", md: "block" },
+              textAlign: "center",
+            }}
+          >
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeInLeft}
+              viewport={{ once: true }}
+            >
+              <Box
+                component="img"
+                src="/assets/fitness_text.png"
+                sx={{
+                  width: "100%",
+                  height: "400px",
+                  borderRadius: "8px",
+                  objectFit: "cover",
+                }}
+              />
+            </motion.div>
+          </Grid>
+
+          {/* Main Content */}
+          <Grid item xs={12} md={6} sx={{ width: { xs: "100%", md: "50%" } }}>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeInUp}
+              viewport={{ once: true }}
+            >
+              <Typography
+                variant="h4"
+                align="center"
+                sx={{
+                  color: "#1A237E",
+                  fontWeight: "bold",
+                  fontSize: { xs: "1.8rem", md: "2.5rem" },
+                  mb: 2,
+                }}
               >
-                <Card>
-                  <CardMedia
-                    component="img"
-                    height="340"
-                    image={program?.img}
-                    alt={`${program?.img}_img`}
-                  />
-                  <CardContent>
-                    <Typography variant="h6">{program?.name}</Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </Grid>
-          ))}
+                Welcome to our Josy health service
+              </Typography>
+              <Typography
+                variant="body1"
+                align="center"
+                sx={{
+                  color: "text.secondary",
+                  fontSize: { xs: "0.9rem", md: "1rem" },
+                  mb: 3,
+                }}
+              >
+                Integer ac arcu id elit dictum aliquam. Nunc id ante id elit
+                finibus accumsan sit amet id lorem. Vestibulum ac elementum
+                arcu, eu vestibulum lorem. Nam semper facilisis placerat. Ut
+                ornare leo nec ipsum efficitur varius. Vestibulum eu odio ut
+                nulla.
+              </Typography>
+            </motion.div>
+          </Grid>
         </Grid>
       </Box>
+
+      {/* Why Choose JOSY Section */}
+      <Box
+        sx={{
+          py: { xs: 4, md: 12 },
+          px: { xs: 2, md: 4 },
+          background: "linear-gradient(45deg, #2C3E50, #8B0000)", // Gradient matching the image
+          color: "#fff",
+          position: "relative",
+          mb: "100px",
+        }}
+      >
+        <Grid
+          container
+          spacing={3}
+          sx={{
+            flexWrap: { xs: "wrap", md: "nowrap" },
+            position: "relative",
+            justifyContent: "space-between",
+          }}
+        >
+          {/* Text and Button */}
+          <Grid item xs={12} md={6}>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeInLeft}
+              viewport={{ once: true }}
+            >
+              <Typography
+                variant="h4"
+                sx={{
+                  fontSize: { xs: "1.8rem", md: "2.5rem" },
+                  fontWeight: "bold",
+                  mb: 2,
+                }}
+              >
+                Why you choose JOSY to be fit & healthy
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  mb: 3,
+                  fontSize: { xs: "0.9rem", md: "1rem" },
+                  opacity: 0.9,
+                  width: { xs: "100%", sm: "60%", md: "50%" },
+                }}
+              >
+                Mauris sit amet velit placerat, dictum quam id, mollis elit.
+                Nunc nec lorem eu ex hendrerit facilisis. Nullam sit amet tortor
+                ex. Vivamus ut leo eu ex.
+              </Typography>
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "#D32F2F",
+                  color: "#fff",
+                  fontSize: { xs: "0.9rem", md: "1rem" },
+                  padding: { xs: "8px 16px", md: "10px 20px" },
+                }}
+                onClick={() => router.push("/program")}
+              >
+                About Me
+              </Button>
+            </motion.div>
+          </Grid>
+
+          {/* Image */}
+          <Grid
+            item
+            xs={12}
+            md={6}
+            sx={{
+              display: "flex",
+              justifyContent: { xs: "center", md: "flex-end" },
+              mt: { xs: 3, md: 0 },
+              position: { xs: "none", sm: "absolute", md: "absolute" },
+              right: "0px",
+            }}
+          >
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeInRight}
+              viewport={{ once: true }}
+            >
+              <Box
+                component="img"
+                src="/assets/strength_training.jpg"
+                alt="Why Choose JOSY"
+                sx={{
+                  width: { xs: "100%", sm: "200px", md: "500px" },
+                  maxWidth: { xs: "100%", sm: "80%", md: "70%" },
+                  height: "250px",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
+                  mt: { xs: "0px", sm: "0px", md: "110px" },
+                }}
+              />
+            </motion.div>
+          </Grid>
+        </Grid>
+      </Box>
+
+      {/* Newsletter Sign-up Section */}
+      <Suspense fallback={<Typography>Loading Newsletter...</Typography>}>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          <LazyNewsletterForm />
+        </motion.div>
+      </Suspense>
 
       {/* Featured Trainers Section */}
       <Box
@@ -166,8 +353,8 @@ const Home = () => {
         <Typography variant="h4" align="center" gutterBottom>
           About JOSY Fitness Studio
         </Typography>
-        <Grid container spacing={3} alignItems="center">
-          <Grid item xs={12} md={6}>
+        <Grid container spacing={3} alignItems="center" justifyContent="center">
+          <Grid item xs={12} md={6} sx={{ width: { xs: "100%", md: "50%" } }}>
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -175,8 +362,14 @@ const Home = () => {
               viewport={{ once: true }}
             >
               <Typography variant="body1" sx={{ mb: 2 }}>
-                JOSY Fitness Studio is dedicated to helping you achieve your
-                health goals with personalized programs and expert guidance.
+                At JOSY Fitness Studio, we are passionate about transforming
+                lives through fitness and wellness. Located at the heart of the
+                community, our state-of-the-art facility is designed to inspire
+                and empower individuals of all fitness levels to achieve their
+                health goals. Whether you're a beginner looking to kickstart
+                your journey or an experienced athlete aiming to elevate your
+                performance, we offer a welcoming environment tailored to your
+                needs.
               </Typography>
             </motion.div>
           </Grid>
@@ -189,7 +382,7 @@ const Home = () => {
             >
               <Box
                 component="iframe"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                src="https://www.youtube.com/embed/37UhELFvPec?si=FgJWogCP6i75SfDn"
                 title="Promo Video"
                 sx={{ width: "100%", height: "300px", border: 0 }}
                 allowFullScreen
@@ -230,17 +423,39 @@ const Home = () => {
         </Grid>
       </Box>
 
-      {/* Newsletter Sign-up Section */}
-      <Suspense fallback={<Typography>Loading Newsletter...</Typography>}>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-        >
-          <LazyNewsletterForm />
-        </motion.div>
-      </Suspense>
+      {/* Overview of Fitness Programs */}
+      <Box sx={{ py: 6, px: 2, backgroundColor: "#fff" }}>
+        <Typography variant="h4" align="center" gutterBottom>
+          Something Know About Health Tips & Tricks
+        </Typography>
+        <Grid container spacing={3} justifyContent="center">
+          {fitnessData.map((program, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index} width={300}>
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2, duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <Card>
+                  <CardMedia
+                    component="img"
+                    height="340"
+                    image={program?.img}
+                    alt={`${program?.img}_img`}
+                  />
+                  <CardContent>
+                    <Typography variant="h6">{program?.name}</Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {program?.info}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
     </>
   );
 };

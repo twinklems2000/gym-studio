@@ -65,15 +65,31 @@ const observerHome = new IntersectionObserver(
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
-        observerHome.unobserve(entry.target);
+        observerHome.unobserve(entry.target); // Unobserve after animation
       }
     });
   },
   { threshold: 0.1 }
 );
 
+// Observe all animatable elements
 document
-  .querySelectorAll(".animate, .animate-scale, .animate-slide-right")
+  .querySelectorAll(".animate, .animate-scale, .animate-slide-right, .welcome-fitness-text, .welcome-text, .why-choose-text, .why-choose-image")
   .forEach((el) => {
     observerHome.observe(el);
   });
+
+// Toast Simulation (if needed)
+function showToast() {
+  alert("Congratulations on joining 🎉");
+}
+
+// Navigation Simulation
+function navigateToProgram() {
+  window.location.href = "/program.html"; // Replace with actual navigation logic
+}
+
+// Footer function (if defined in footer.js)
+function goToOnlineCourse() {
+  window.location.href = "/online-courses"; // Replace with actual navigation logic
+}

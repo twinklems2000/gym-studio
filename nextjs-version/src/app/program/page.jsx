@@ -1,5 +1,6 @@
 "use client";
 
+import { toastService } from "@/utills/config";
 import {
   gymPrograms,
   programIncludes,
@@ -84,9 +85,7 @@ const ProgramDetailPage = () => {
     console.log("Fitness Health added to cart");
   };
 
-  const handleJoinNow = () => {
-    console.log("Joined Fitness Health");
-  };
+  
 
   return (
     <>
@@ -132,8 +131,7 @@ const ProgramDetailPage = () => {
               <Button
                 variant="contained"
                 style={{ backgroundColor: "#D32F2F", color: "#fff" }}
-                onClick={handleJoinNow}
-              >
+                onClick={() =>  toastService.success("Congratulations on joining 🎉 ")}>
                 Join Now
               </Button>
             </motion.div>
@@ -148,15 +146,16 @@ const ProgramDetailPage = () => {
         animate={overviewInView ? "visible" : "hidden"}
         variants={fadeInUp}
       >
-        <Box sx={{ py: 4, px: 2 }}>
-          <Typography variant="h4" gutterBottom>
+        <Box sx={{ py: 4, px: 2, mx: "auto" }}>
+          <Typography variant="h4" gutterBottom textAlign="center">
             Program Overview
           </Typography>
           <Typography variant="body1" sx={{ mb: 2 }}>
-            Experience tranquility and strength with our Yoga Flow program.
-            Perfect for all levels, this class combines mindful breathing, fluid
-            movements, and deep stretches to enhance flexibility, balance, and
-            mental clarity.
+            This gym program is designed to promote overall fitness, strength,
+            and endurance for individuals of all fitness levels. It combines
+            strength training, cardiovascular exercises, and flexibility work to
+            help participants achieve their health and fitness goals, whether
+            it’s building muscle, improving stamina, or enhancing mobility.
           </Typography>
           <Typography variant="body1" sx={{ fontWeight: "bold" }}>
             Price: $75 | Duration: 1 month
@@ -223,7 +222,7 @@ const ProgramDetailPage = () => {
           </Typography>
           <Box
             component="iframe"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            src="https://www.youtube.com/embed/37UhELFvPec?si=FgJWogCP6i75SfDn"
             title="Program Video"
             sx={{ width: "100%", height: "400px", border: 0 }}
             allowFullScreen
@@ -238,8 +237,15 @@ const ProgramDetailPage = () => {
         animate={trainersInView ? "visible" : "hidden"}
         variants={fadeInUp}
       >
-        <Box sx={{ py: 4, px: 2, backgroundColor: "#f5f5f5" }}>
-          <Typography variant="h4" gutterBottom>
+        <Box
+          sx={{
+            py: 4,
+            px: 2,
+             background: "linear-gradient(45deg, #1A237E, #4A148C)",
+          color: "#fff",
+          }}
+        >
+          <Typography variant="h4" gutterBottom textAlign="center">
             Meet Your Trainer
           </Typography>
           <Grid
@@ -261,7 +267,7 @@ const ProgramDetailPage = () => {
                     <CardMedia
                       component="img"
                       height="450"
-                      image={trainer.img2}
+                      image={trainer.img}
                       alt={trainer.name}
                     />
                     <CardContent>
@@ -285,7 +291,7 @@ const ProgramDetailPage = () => {
         animate={scheduleInView ? "visible" : "hidden"}
         variants={fadeInUp}
       >
-        <Box sx={{ py: 4, px: 2, backgroundColor: "#fff" }}>
+        <Box sx={{ py: 4, px: 2, backgroundColor: "#f5f5f5" }}>
           <Typography variant="h4" gutterBottom>
             Schedule
           </Typography>
@@ -325,7 +331,7 @@ const ProgramDetailPage = () => {
         animate={includesInView ? "visible" : "hidden"}
         variants={fadeInUp}
       >
-        <Box sx={{ py: 4, px: 2, backgroundColor: "#f5f5f5", mx: 2 }}>
+        <Box sx={{ py: 4, px: 2,  mx: 2 }}>
           <Typography variant="h4" gutterBottom>
             What’s Included
           </Typography>
@@ -342,49 +348,6 @@ const ProgramDetailPage = () => {
               </motion.li>
             ))}
           </ul>
-        </Box>
-      </motion.div>
-
-      {/* CTAs */}
-      <motion.div
-        ref={ctaRef}
-        initial="hidden"
-        animate={ctaInView ? "visible" : "hidden"}
-        variants={scaleIn}
-      >
-        <Box
-          sx={{ py: 4, px: 2, backgroundColor: "#fff", textAlign: "center" }}
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={
-              ctaInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
-            }
-            transition={{ delay: 0.2 }}
-          >
-            <Button
-              variant="contained"
-              style={{ backgroundColor: "#D32F2F", color: "#fff", mr: 2 }}
-              onClick={handleAddToCart}
-            >
-              Add to Cart
-            </Button>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={
-              ctaInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
-            }
-            transition={{ delay: 0.4 }}
-          >
-            <Button
-              variant="contained"
-              style={{ backgroundColor: "#1A237E", color: "#fff" }}
-              onClick={handleJoinNow}
-            >
-              Join Now
-            </Button>
-          </motion.div>
         </Box>
       </motion.div>
     </>

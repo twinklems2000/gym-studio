@@ -43,9 +43,9 @@ const Contact = () => {
         maxWidth="lg"
         style={{ paddingTop: "20px", paddingBottom: "20px" }}
       >
-        {/* <Typography variant="h4" align="center" gutterBottom>
-          Contacts
-        </Typography> */}
+        <Typography variant="h4" align="center" gutterBottom>
+          Contacts Form
+        </Typography>
 
         <MapContainer>
           <iframe

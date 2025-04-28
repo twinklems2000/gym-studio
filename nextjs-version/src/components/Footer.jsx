@@ -3,8 +3,10 @@ import { Box, Typography, Grid, Button, Link } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import { useRouter } from "next/navigation";
 
 const Footer = () => {
+  const router = useRouter()
   return (
     <Box
       component="footer"
@@ -51,7 +53,7 @@ const Footer = () => {
               px: { xs: 2, md: 3 },
               "&:hover": { backgroundColor: "#B71C1C" },
             }}
-            // onClick={() => window.open('/online-course', '_self')}
+            onClick={() => router.push('membership')}
           >
             Online Course
           </Button>

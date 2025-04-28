@@ -1,17 +1,20 @@
 export const fitnessData = [
-    {
-        name: "Yoga", 
-        img: "/assets/41574154e8d3f8679c91806423cdbb69.jpg"
-    },
-    {
-        name: "Health", 
-        img: "/assets/c3b98c22a2568cfaa62856e249804017.jpg"
-    },
-    {
-        name: "Fitness", 
-        img: "/assets/471c2a2459d16cad14f28f5acbb4be05.jpg"
-    },
-]
+  {
+    name: "Yoga",
+    img: "/assets/41574154e8d3f8679c91806423cdbb69.jpg",
+    info: "Enhance flexibility, reduce stress, and improve balance with our expert-led yoga sessions designed for all levels."
+  },
+  {
+    name: "Health",
+    img: "/assets/c3b98c22a2568cfaa62856e249804017.jpg",
+    info: "Focus on overall well-being with our health programs, including nutrition advice and wellness workshops."
+  },
+  {
+    name: "Fitness",
+    img: "/assets/471c2a2459d16cad14f28f5acbb4be05.jpg",
+    info: "Build strength and endurance with our dynamic fitness classes, featuring cardio and strength training exercises."
+  },
+];
 
 export const trainerData  = [
     {
@@ -26,8 +29,8 @@ export const trainerData  = [
     },
     {
       name: "Mike Johnson",
-      about: "Specializes in high-intensity interval training (HIIT) and cardio workouts.",
-      img: "/assets/trainer-mike.jpg", 
+      about: "Specializes in high-intensity interval training (HIIT) and cardio workouts for better health.",
+      img: "/assets/trainer_2.jpg", 
     },
   ];
 
@@ -106,7 +109,7 @@ export const membershipData = [
     price: 129,
     duration: "30 days",
     type: "Group Classes",
-    image: "group_classes.jpg",
+    image: "/assets/group_classes.jpg",
   },
   {
     title: "Online Strength Training",

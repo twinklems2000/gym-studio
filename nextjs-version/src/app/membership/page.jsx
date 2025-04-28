@@ -13,9 +13,22 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  List,
+  ListItem,
+  ListItemText,
+  IconButton,
 } from "@mui/material";
 import { motion, useInView } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
 import { membershipData } from "@/utills/constant";
+import { toastService } from "@/utills/config";
+import { addToCart, clearCart, removeFromCart } from "@/redux/features/cart/cartSlice";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 // Animation Variants
 const fadeInUp = {
@@ -34,7 +47,9 @@ const scaleIn = {
 
 const MembershipPage = () => {
   const [filterType, setFilterType] = useState("All");
-  const [sortBy, setSortBy] = useState("Price");
+  const [openCart, setOpenCart] = useState(false); // State for dialog
+  const dispatch = useDispatch();
+  const { programList } = useSelector((state) => state.cart);
 
   // Refs for scroll detection
   const heroRef = useRef(null);
@@ -50,7 +65,27 @@ const MembershipPage = () => {
   });
 
   const handleAddToCart = (program) => {
-    console.log(`${program.title} added to cart`);
+    dispatch(addToCart(program));
+    toastService.success(`${program.title} added to cart`);
+  };
+
+  const handleRemoveFromCart = (program) => {
+    dispatch(removeFromCart(program));
+    toastService.success(`${program.title} removed from cart`);
+  };
+
+  const handleOpenCart = () => {
+    setOpenCart(true);
+  };
+
+  const handleCloseCart = () => {
+    setOpenCart(false);
+  };
+
+  const handleSubmitCart = () => {
+    toastService.success("Cart submitted successfully!");
+    dispatch(clearCart());
+    handleCloseCart();
   };
 
   // Filter programs by type
@@ -61,6 +96,50 @@ const MembershipPage = () => {
 
   return (
     <>
+      {/* Cart Dialog */}
+      <Dialog open={openCart} onClose={handleCloseCart} maxWidth="sm" fullWidth>
+        <DialogTitle>Your Cart</DialogTitle>
+        <DialogContent>
+          {programList.length === 0 ? (
+            <Typography>Your cart is empty.</Typography>
+          ) : (
+            <List>
+              {programList.map((item, index) => (
+                <ListItem
+                  key={item.title}
+                  secondaryAction={
+                    <IconButton
+                      edge="end"
+                      color="error"
+                      onClick={() => handleRemoveFromCart(item)}
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  }
+                >
+                  <ListItemText
+                    primary={`${item.title} (x${item.quantity})`}
+                    secondary={`Price: $${item.price} | Duration: ${item.duration}`}
+                  />
+                </ListItem>
+              ))}
+            </List>
+          )}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseCart}>Cancel</Button>
+          <Button
+            onClick={handleSubmitCart}
+            variant="contained"
+            color="primary"
+            disabled={programList.length === 0}
+            sx={{backgroundColor: "#D32F2F", color: "#fff" }}
+          >
+            Submit
+          </Button>
+        </DialogActions>
+      </Dialog>
+
       {/* Hero Section */}
       <motion.div
         ref={heroRef}
@@ -102,9 +181,11 @@ const MembershipPage = () => {
             >
               <Button
                 variant="contained"
-                style={{ backgroundColor: "#D32F2F", color: "#fff" }}
+                startIcon={<ShoppingCartIcon />}
+                onClick={handleOpenCart}
+                sx={{ backgroundColor: "#D32F2F", color: "#fff" }}
               >
-                Become a VIP
+                Cart ({programList.length})
               </Button>
             </motion.div>
           </Box>

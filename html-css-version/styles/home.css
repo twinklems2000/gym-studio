@@ -1,0 +1,459 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+  
+  /* Animations */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  @keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
+  [data-animate] {
+    opacity: 0;
+  }
+  
+  [data-animate="fadeInUp"] {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  [data-animate="fadeInLeft"] {
+    animation: fadeInLeft 0.8s ease-out forwards;
+  }
+  
+  [data-animate="fadeInRight"] {
+    animation: fadeInRight 0.8s ease-out forwards;
+  }
+  
+  [data-animate="scaleIn"] {
+    animation: scaleIn 0.8s ease-out forwards;
+  }
+  
+  /* Hero Section */
+  .hero {
+    position: relative;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    opacity: 0.5;
+    z-index: 0;
+  }
+  
+  .hero-content {
+    z-index: 1;
+    position: relative;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .join-btn {
+    background-color: #D32F2F;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+  }
+  
+  @media (min-width: 768px) {
+    .hero h1 {
+      font-size: 4rem;
+    }
+    .join-btn {
+      font-size: 1.5rem;
+      padding: 0.75rem 1.5rem;
+    }
+  }
+  
+  /* Welcome Section */
+  .welcome-section {
+    padding: 2rem 1rem;
+    background-color: #fff;
+  }
+  
+  .welcome-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .fitness-text {
+    display: none;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+  
+  .welcome-text h2 {
+    color: #1A237E;
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .welcome-text p {
+    color: #757575;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  @media (min-width: 768px) {
+    .welcome-content {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .fitness-text {
+      display: block;
+      width: 40%;
+    }
+    .welcome-text {
+      width: 50%;
+    }
+    .welcome-text h2 {
+      font-size: 2.5rem;
+    }
+    .welcome-text p {
+      font-size: 1rem;
+    }
+  }
+  
+  /* Why Choose Section */
+  .why-choose-section {
+    padding: 2rem 1rem 6rem;
+    background: linear-gradient(45deg, #2C3E50, #8B0000);
+    color: #fff;
+    position: relative;
+    margin-bottom: 100px;
+  }
+  
+  .why-choose-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .why-choose-text {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .why-choose-text h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .why-choose-text p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+  
+  .why-choose-image img {
+    width: 100%;
+    height: 250px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .about-btn {
+    background-color: #D32F2F;
+    color: #fff;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+  }
+  
+  @media (min-width: 768px) {
+    .why-choose-content {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .why-choose-text {
+      width: 50%;
+      text-align: left;
+    }
+    .why-choose-text h2 {
+      font-size: 2.5rem;
+    }
+    .why-choose-text p {
+      font-size: 1rem;
+      width: 50%;
+    }
+    .why-choose-image {
+      width: 40%;
+      position: absolute;
+      right: 0;
+      top: 110px;
+    }
+    .about-btn {
+      font-size: 1rem;
+      padding: 0.75rem 1.5rem;
+    }
+  }
+  
+  /* Newsletter Section */
+  .newsletter-section {
+    padding: 2rem 1rem;
+    background-color: #fff;
+  }
+  
+  .newsletter-content {
+    text-align: center;
+  }
+  
+  /* Trainers Section */
+  .trainers-section {
+    padding: 2rem 1rem;
+    background: linear-gradient(45deg, #1A237E, #4A148C);
+    color: #fff;
+    text-align: center;
+  }
+  
+  .trainers-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .trainers-grid {
+    display: grid;
+    gap: 1rem;
+  }
+  
+  .trainer-card {
+    background-color: #fff;
+    color: #000;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .trainer-card img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+  }
+  
+  .trainer-card-content {
+    padding: 1rem;
+  }
+  
+  .trainer-card-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .trainer-card-content p {
+    font-size: 0.9rem;
+    color: #757575;
+  }
+  
+  @media (min-width: 768px) {
+    .trainers-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .trainers-section h2 {
+      font-size: 2.5rem;
+    }
+    .trainer-card-content h3 {
+      font-size: 1.5rem;
+    }
+    .trainer-card-content p {
+      font-size: 1rem;
+    }
+  }
+  
+  /* About Section */
+  .about-section {
+    padding: 2rem 1rem;
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  .about-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .about-text p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .about-video iframe {
+    width: 100%;
+    height: 300px;
+    border: 0;
+  }
+  
+  @media (min-width: 768px) {
+    .about-content {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .about-text {
+      width: 50%;
+      text-align: left;
+    }
+    .about-section h2 {
+      font-size: 2.5rem;
+    }
+    .about-text p {
+      font-size: 1rem;
+    }
+  }
+  
+  /* Testimonials Section */
+  .testimonials-section {
+    padding: 2rem 1rem;
+    background-color: #D32F2F;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .testimonials-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .testimonials-grid {
+    display: grid;
+    gap: 1rem;
+  }
+  
+  .testimonial {
+    background-color: #fff;
+    color: #000;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  .testimonial p {
+    font-style: italic;
+    margin-bottom: 0.5rem;
+  }
+  
+  .testimonial .author {
+    font-size: 0.9rem;
+  }
+  
+  @media (min-width: 768px) {
+    .testimonials-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .testimonials-section h2 {
+      font-size: 2.5rem;
+    }
+    .testimonial .author {
+      font-size: 1rem;
+    }
+  }
+  
+  /* Fitness Programs Section */
+  .fitness-programs-section {
+    padding: 2rem 1rem;
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  .fitness-programs-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .fitness-programs-grid {
+    display: grid;
+    gap: 1rem;
+  }
+  
+  .program-card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .program-card img {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+  }
+  
+  .program-card-content {
+    padding: 1rem;
+  }
+  
+  .program-card-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .program-card-content p {
+    font-size: 0.9rem;
+    color: #757575;
+  }
+  
+  @media (min-width: 768px) {
+    .fitness-programs-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .fitness-programs-section h2 {
+      font-size: 2.5rem;
+    }
+    .program-card-content h3 {
+      font-size: 1.5rem;
+    }
+    .program-card-content p {
+      font-size: 1rem;
+    }
+  }

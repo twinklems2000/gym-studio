@@ -202,6 +202,84 @@
             font-size: 1rem;
         }
 
+        /* Welcome Section */
+        .welcome-section {
+            padding: 2rem 0.5rem;
+            background-color: #fff;
+        }
+
+        .welcome-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .welcome-fitness-text {
+            display: none;
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .welcome-text h2 {
+            color: #1A237E;
+            font-weight: bold;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .welcome-text p {
+            color: #757575;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        /* Why Choose Section */
+        .why-choose-section {
+            padding: 2rem 0.5rem 6rem;
+            background: linear-gradient(45deg, #2C3E50, #8B0000);
+            color: #fff;
+            position: relative;
+            margin-bottom: 100px;
+        }
+
+        .why-choose-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .why-choose-text {
+            text-align: center;
+            margin-bottom: 1rem;
+            margin-left: 20px;
+        }
+
+        .why-choose-text h2 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .why-choose-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+
+        .why-choose-image img {
+            width: 300px;
+            height: 250px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
         /* Animations */
         .animate {
             opacity: 0;
@@ -238,6 +316,56 @@
 
         /* Desktop Styles */
         @media (min-width: 600px) {
+
+            .welcome-content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .welcome-fitness-text {
+                display: block;
+                width: 40%;
+            }
+
+            .welcome-text {
+                width: 50%;
+            }
+
+            .welcome-text h2 {
+                font-size: 2.5rem;
+            }
+
+            .welcome-text p {
+                font-size: 1rem;
+            }
+
+            .why-choose-content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+
+            .why-choose-text {
+                width: 50%;
+                text-align: left;
+            }
+
+            .why-choose-text h2 {
+                font-size: 2.5rem;
+            }
+
+            .why-choose-text p {
+                font-size: 1rem;
+                width: 50%;
+            }
+
+            .why-choose-image {
+                width: 40%;
+                position: absolute;
+                right: 0;
+                top: 110px;
+            }
             .grid-item {
                 flex: 1 1 calc(50% - 1rem);
                 max-width: calc(50% - 1rem);
@@ -271,6 +399,10 @@
         }
 
         @media (min-width: 900px) {
+
+            .why-choose-text p {
+                width: 50%;
+            }
             .hero h1 {
                 font-size: 4rem;
             }
@@ -327,7 +459,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <video autoplay loop muted playsinline>
-            <source src="/images/banner_video.mp4" type="video/mp4" />
+            <source src="/images/banner_video_2.mp4" type="video/mp4" />
             Your browser does not support the video tag.
         </video>
         <div class="hero-content animate">
@@ -336,11 +468,31 @@
         </div>
     </section>
 
-    <!-- Fitness Programs Section -->
-    <section class="section bg-white">
-        <h2>Welcome to our JOSY Health Care Service</h2>
-        <div class="grid" id="fitness-programs"></div>
+    <!-- Welcome to Josy Health Service Section -->
+    <section class="welcome-section section">
+        <div class="welcome-content">
+            <img src="/images/fitness_text.png" alt="Fitness Text" class="welcome-fitness-text animate" data-delay="0s">
+            <div class="welcome-text animate" data-delay="0.2s">
+                <h2>Welcome to our Josy health service</h2>
+                <p>Integer ac arcu id elit dictum aliquam. Nunc id ante id elit finibus accumsan sit amet id lorem. Vestibulum ac elementum arcu, eu vestibulum lorem. Nam semper facilisis placerat. Ut ornare leo nec ipsum efficitur varius. Vestibulum eu odio ut nulla.</p>
+            </div>
+        </div>
     </section>
+
+    <!-- Why Choose JOSY Section -->
+    <section class="why-choose-section section">
+        <div class="why-choose-content">
+            <div class="why-choose-text animate" data-delay="0s">
+                <h2>Why you choose JOSY to be fit & healthy</h2>
+                <p>Mauris sit amet velit placerat, dictum quam id, mollis elit. Nunc nec lorem eu ex hendrerit facilisis. Nullam sit amet tortor ex. Vivamus ut leo eu ex.</p>
+                <a href="/program.html" class="btn about-btn">About Me</a>
+            </div>
+            <div class="why-choose-image animate-slide-right" data-delay="0.2s">
+                <img src="/images/strength_training.jpg" alt="Why Choose JOSY">
+            </div>
+        </div>
+    </section>
+
 
     <!-- Trainers Section -->
     <section class="section bg-gradient">
@@ -359,7 +511,7 @@
                 </p>
             </div>
             <div class="animate-slide-right">
-                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Promo Video" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/37UhELFvPec?si=FgJWogCP6i75SfDn" title="Promo Video" allowfullscreen></iframe>
             </div>
         </div>
     </section>
@@ -388,15 +540,6 @@
                     </div>
                     </nav>
 
-                    <!-- Main Content -->
-                    <!-- <main>
-                            <section class="section bg-white">
-                                <h2>Our Programs</h2>
-                                <p>Explore our range of fitness programs tailored to your needs.</p>
-                            </section>
-                        </main> -->
-
-
                 </div>
             </div>
 
@@ -404,6 +547,11 @@
     </section>
 
 
+    <!-- Fitness Programs Section -->
+    <section class="section bg-white">
+        <h2>Something Know About Health Tips & Tricks</h2>
+        <div class="grid" id="fitness-programs"></div>
+    </section>
 
     <!-- Footer -->
     <footer>

@@ -1,18 +1,18 @@
 "use client";
 
-import { AppBar, Button, Toolbar, Typography, IconButton, Drawer, List, ListItem, ListItemText, Box } from '@mui/material';
+import { AppBar, Toolbar, Typography, IconButton, Drawer, List, ListItem, ListItemText, Box } from '@mui/material';
 import { useRouter, usePathname } from 'next/navigation';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
 
 const Navbar = () => {
   const router = useRouter();
-  const pathname = usePathname(); // Get the current route
+  const pathname = usePathname(); 
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const handleNavigation = (route) => {
     router.push(route);
-    setDrawerOpen(false); // Close drawer on navigation
+    setDrawerOpen(false); 
   };
 
   const toggleDrawer = (open) => () => {
@@ -32,7 +32,7 @@ const Navbar = () => {
   return (
     <>
       <AppBar
-        position="fixed" // Changed from "static" to "fixed"
+        position="fixed" 
         sx={{
           background: 'linear-gradient(45deg, #1A237E, #4A148C)',
           borderBottom: `1px solid #ffffff`,
@@ -40,8 +40,8 @@ const Navbar = () => {
       >
         <Toolbar
           sx={{
-            px: { xs: 1, md: 2 }, // Padding for mobile and desktop
-            minHeight: { xs: 48, md: 0 }, // Adjust toolbar height
+            px: { xs: 1, md: 2 }, 
+            minHeight: { xs: 48, md: 0 }, 
           }}
         >
           {/* Logo */}
@@ -111,7 +111,7 @@ const Navbar = () => {
           <List>
             {menuItems.map((item) => (
               <ListItem
-                button
+                button="true"
                 key={item.label}
                 onClick={() => handleNavigation(item.route)}
                 sx={{
