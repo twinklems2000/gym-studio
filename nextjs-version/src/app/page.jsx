@@ -2,7 +2,15 @@
 
 import NewsletterForm from "@/components/NewsletterForm";
 import { fitnessData, trainerData } from "@/utills/constant";
-import { Box, Button, Typography, Grid, Card, CardContent, CardMedia } from "@mui/material";
+import {
+  Box,
+  Button,
+  Typography,
+  Grid,
+  Card,
+  CardContent,
+  CardMedia,
+} from "@mui/material";
 import { motion } from "framer-motion"; // Import Framer Motion
 import { useEffect } from "react";
 
@@ -16,14 +24,14 @@ const Home = () => {
         transition={{ duration: 1, ease: "easeOut" }}
         viewport={{ once: true }}
         style={{
-          position: 'relative',
-          height: '80vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: '#fff',
-          textAlign: 'center',
-          overflow: 'hidden', // Prevent video overflow
+          position: "relative",
+          height: "80vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#fff",
+          textAlign: "center",
+          overflow: "hidden", // Prevent video overflow
         }}
       >
         <motion.div
@@ -31,12 +39,26 @@ const Home = () => {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 1 }}
           viewport={{ once: true }}
-          style={{ zIndex: 1, position: 'relative' }}
+          style={{ zIndex: 1, position: "relative" }}
         >
-          <Typography variant="h1" sx={{ fontSize: { xs: '2.5rem', md: '4rem' }, fontWeight: 'bold', mb: 2 }}>
+          <Typography
+            variant="h1"
+            sx={{
+              fontSize: { xs: "2.5rem", md: "4rem" },
+              fontWeight: "bold",
+              mb: 2,
+            }}
+          >
             Build A Perfect Health Growth
           </Typography>
-          <Button variant="contained" style={{ backgroundColor: '#D32F2F', color: '#fff', fontSize: '1.2rem' }}>
+          <Button
+            variant="contained"
+            style={{
+              backgroundColor: "#D32F2F",
+              color: "#fff",
+              fontSize: "1.2rem",
+            }}
+          >
             Join Now
           </Button>
         </motion.div>
@@ -47,24 +69,24 @@ const Home = () => {
           muted
           playsInline // Added to ensure playback on mobile devices
           sx={{
-            position: 'absolute',
+            position: "absolute",
             top: 0,
             left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
             opacity: 0.5,
             zIndex: 0, // Ensure video is behind content
           }}
         >
-          <source src="/assets/mov_bbb.mp4" type="video/mp4" />
+          <source src="/assets/banner_video.mp4" type="video/mp4" />
           {/* Fallback for browsers that don't support video */}
           Your browser does not support the video tag.
         </Box>
       </motion.div>
 
       {/* Overview of Fitness Programs */}
-      <Box sx={{ py: 6, px: 2, backgroundColor: '#fff' }}>
+      <Box sx={{ py: 6, px: 2, backgroundColor: "#fff" }}>
         <Typography variant="h4" align="center" gutterBottom>
           Welcome to our JOSY Health Care Service
         </Typography>
@@ -98,7 +120,14 @@ const Home = () => {
       </Box>
 
       {/* Featured Trainers Section */}
-      <Box sx={{ py: 6, px: 2, background: 'linear-gradient(45deg, #1A237E, #4A148C)', color: '#fff' }}>
+      <Box
+        sx={{
+          py: 6,
+          px: 2,
+          background: "linear-gradient(45deg, #1A237E, #4A148C)",
+          color: "#fff",
+        }}
+      >
         <Typography variant="h4" align="center" gutterBottom>
           Meet Our Expert Trainers
         </Typography>
@@ -111,7 +140,7 @@ const Home = () => {
                 transition={{ delay: index * 0.2, duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <Card sx={{ backgroundColor: '#fff', color: '#000' }}>
+                <Card sx={{ backgroundColor: "#fff", color: "#000" }}>
                   <CardMedia
                     component="img"
                     height="500"
@@ -132,7 +161,7 @@ const Home = () => {
       </Box>
 
       {/* About the Studio Section */}
-      <Box sx={{ py: 6, px: 2, backgroundColor: '#fff' }}>
+      <Box sx={{ py: 6, px: 2, backgroundColor: "#fff" }}>
         <Typography variant="h4" align="center" gutterBottom>
           About JOSY Fitness Studio
         </Typography>
@@ -145,7 +174,8 @@ const Home = () => {
               viewport={{ once: true }}
             >
               <Typography variant="body1" sx={{ mb: 2 }}>
-                JOSY Fitness Studio is dedicated to helping you achieve your health goals with personalized programs and expert guidance.
+                JOSY Fitness Studio is dedicated to helping you achieve your
+                health goals with personalized programs and expert guidance.
               </Typography>
             </motion.div>
           </Grid>
@@ -160,7 +190,7 @@ const Home = () => {
                 component="iframe"
                 src="https://www.youtube.com/embed/dQw4w9WgXcQ"
                 title="Promo Video"
-                sx={{ width: '100%', height: '300px', border: 0 }}
+                sx={{ width: "100%", height: "300px", border: 0 }}
                 allowFullScreen
               />
             </motion.div>
@@ -169,12 +199,12 @@ const Home = () => {
       </Box>
 
       {/* Testimonials Section */}
-      <Box sx={{ py: 6, px: 2, backgroundColor: '#D32F2F', color: '#fff' }}>
+      <Box sx={{ py: 6, px: 2, backgroundColor: "#D32F2F", color: "#fff" }}>
         <Typography variant="h4" align="center" gutterBottom>
           Success Stories from Our Clients
         </Typography>
         <Grid container spacing={3} justifyContent="center">
-          {['Client 1', 'Client 2'].map((client, index) => (
+          {["Client 1", "Client 2"].map((client, index) => (
             <Grid item xs={12} sm={6} key={client}>
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
@@ -182,10 +212,11 @@ const Home = () => {
                 transition={{ delay: index * 0.2, duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <Card sx={{ backgroundColor: '#fff', color: '#000' }}>
+                <Card sx={{ backgroundColor: "#fff", color: "#000" }}>
                   <CardContent>
-                    <Typography variant="body1" sx={{ fontStyle: 'italic' }}>
-                      "JOSY Fitness transformed my life! I feel stronger and healthier than ever."
+                    <Typography variant="body1" sx={{ fontStyle: "italic" }}>
+                      "JOSY Fitness transformed my life! I feel stronger and
+                      healthier than ever."
                     </Typography>
                     <Typography variant="subtitle2" sx={{ mt: 1 }}>
                       - {client}
