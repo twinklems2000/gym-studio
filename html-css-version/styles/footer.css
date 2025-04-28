@@ -1,0 +1,128 @@
+ /* Footer CSS (from footer.css) */
+ footer {
+    background: linear-gradient(45deg, #1A237E, #4A148C);
+    color: #fff;
+    padding: 2rem 1rem;
+    margin-top: auto;
+    position: relative;
+    z-index: 1;
+} 
+footer > .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+.footer-section h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+.footer-section p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+.footer-section a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+.footer-section a:hover {
+    text-decoration: underline;
+}
+.josy-section p {
+    width: 55%;
+    margin-bottom: 1rem;
+}
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: #fff;
+    background-color: #D32F2F;
+}
+.btn:hover {
+    background-color: #B71C1C;
+}
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+.social-icons a {
+    color: #fff;
+    font-size: 1.5rem;
+}
+.social-icons.desktop {
+    display: none;
+}
+.copyright {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.8rem;
+}
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.visible {
+    opacity: 1;
+    transform: none;
+}
+/* Fallback for no JavaScript or failed observer */
+.no-js .fade-in-up,
+.fade-in-up.visible {
+    opacity: 1;
+    transform: none;
+}
+@media (min-width: 600px) {
+    footer {
+        padding: 3rem 2rem;
+    }
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .footer-section h2 {
+        font-size: 1.4rem;
+    }
+    .footer-section p,
+    .footer-section a {
+        font-size: 1rem;
+    }
+    .btn {
+        font-size: 1rem;
+        padding: 10px 24px;
+    }
+}
+@media (min-width: 900px) {
+    .footer-grid {
+        grid-template-columns: 2fr 2fr 2fr 1fr;
+    }
+    .social-icons.mobile {
+        display: none;
+    }
+    .social-icons.desktop {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+    .social-icons.desktop a {
+        font-size: 2rem;
+    }
+    .footer-section h2 {
+        font-size: 1.5rem;
+    }
+}
