@@ -1,9 +1,497 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gym & Fitness Studio</title>
-  </head>
-  <body></body>
+    <title>JOSY Fitness Studio - Home</title>
+    <link rel="stylesheet" href="styles/nav.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <script src="/js/footer.js"></script>
+
+    <style>
+        /* Mobile-first CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-2 {
+            margin-bottom: 1rem;
+        }
+
+        .py-6 {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .px-2 {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+
+
+
+        /* Main Content */
+        main {
+            margin-top: 48px;
+            /* Adjust for fixed navbar */
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .hero-content {
+            z-index: 1;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            background-color: #d32f2f;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #b71c1c;
+        }
+
+        /* Grid System */
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .grid-item {
+            flex: 1 1 100%;
+            max-width: 100%;
+        }
+
+        /* Card Component */
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 2rem 0.5rem;
+        }
+
+        .section h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .bg-white {
+            background-color: #fff;
+        }
+
+        .bg-gradient {
+            background: linear-gradient(45deg, #1a237e, #4a148c);
+            color: #fff;
+        }
+
+        .bg-red {
+            background-color: #d32f2f;
+            color: #fff;
+        }
+
+        /* Trainer Cards */
+        .trainer-card img {
+            height: 500px;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .about-grid iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+        }
+
+        /* Newsletter Form */
+        .newsletter-form {
+            max-width: 500px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .newsletter-form input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Animations */
+        .animate {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animate-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .animate-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .animate-slide-right {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .animate-slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 600px) {
+            .grid-item {
+                flex: 1 1 calc(50% - 1rem);
+                max-width: calc(50% - 1rem);
+            }
+
+            .about-grid {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .about-grid>div {
+                flex: 1;
+            }
+
+            .toolbar {
+                padding: 0.5rem 2rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .hamburger {
+                display: none;
+            }
+
+            .desktop-menu {
+                display: flex;
+                gap: 0.5rem;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .section h2 {
+                font-size: 2.25rem;
+            }
+
+            .grid-item {
+                flex: 1 1 calc(33.333% - 1rem);
+                max-width: calc(33.333% - 1rem);
+            }
+
+            .card img {
+                height: 340px;
+            }
+
+            .trainer-card img {
+                height: 500px;
+            }
+
+            .desktop-menu a {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="toolbar">
+            <div class="logo">JOSY</div>
+            <button class="hamburger">☰</button>
+            <div class="desktop-menu">
+                <a href="/index.html" class="nav-link active">Home</a>
+                <a href="/program.html" class="nav-link">Program</a>
+                <a href="/membership.html" class="nav-link">Membership</a>
+                <a href="/contact.html" class="nav-link">Contacts</a>
+            </div>
+        </div>
+        <!-- Drawer for Mobile -->
+        <div class="drawer">
+            <ul class="drawer-list">
+                <li><a href="/index.html" class="nav-link active">Home</a></li>
+                <li><a href="/program.html" class="nav-link">Program</a></li>
+                <li><a href="/membership.html" class="nav-link">Membership</a></li>
+                <li><a href="/contact.html" class="nav-link">Contacts</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <video autoplay loop muted playsinline>
+                <source src="/images/mov_bbb.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-content animate">
+                <h1>Build A Perfect Health Growth</h1>
+                <a href="#join" class="btn">Join Now</a>
+            </div>
+        </section>
+
+        <!-- Fitness Programs Section -->
+        <section class="section bg-white">
+            <h2>Welcome to our JOSY Health Care Service</h2>
+            <div class="grid" id="fitness-programs"></div>
+        </section>
+
+        <!-- Trainers Section -->
+        <section class="section bg-gradient">
+            <h2>Meet Our Expert Trainers</h2>
+            <div class="grid" id="trainers"></div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section bg-white">
+            <h2>About JOSY Fitness Studio</h2>
+            <div class="about-grid">
+                <div class="animate">
+                    <p class="mb-2">
+                        JOSY Fitness Studio is dedicated to helping you achieve your health goals with personalized
+                        programs and expert guidance.
+                    </p>
+                </div>
+                <div class="animate-slide-right">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Promo Video"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="section bg-red">
+            <h2>Success Stories from Our Clients</h2>
+            <div class="grid">
+                <div class="grid-item animate">
+                    <div class="card">
+                        <div class="card-content">
+                            <p style="font-style: italic;">
+                                "JOSY Fitness transformed my life! I feel stronger and healthier than ever."
+                            </p>
+                            <p style="margin-top: 0.5rem;">- Client 1</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-item animate">
+                    <div class="card">
+                        <div class="card-content">
+                            <p style="font-style: italic;">
+                                "JOSY Fitness transformed my life! I feel stronger and healthier than ever."
+                            </p>
+                            <p style="margin-top: 0.5rem;">- Client 2</p>
+                        </div>
+                        </nav>
+
+                        <!-- Main Content -->
+                        <!-- <main>
+                            <section class="section bg-white">
+                                <h2>Our Programs</h2>
+                                <p>Explore our range of fitness programs tailored to your needs.</p>
+                            </section>
+                        </main> -->
+
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-section josy-section fade-in-up">
+                        <h2>JOSY</h2>
+                        <p>
+                            Maecenas bibendum maximus blandit. Sed eget mi rut. Donec hendrerit
+                            tincidunt lacinia.
+                        </p>
+                        <button class="btn" onclick="goToOnlineCourse()">Online Course</button>
+                    </div>
+                    <div class="footer-section fade-in-up">
+                        <h2>Quick Contacts</h2>
+                        <p>ThemeForest, Envato HQ 121 King St, Los Angeles, USA</p>
+                        <p>+8 (465) 989 20 11</p>
+                    </div>
+                    <div class="footer-section fade-in-up">
+                        <h2>Quick Links</h2>
+                        <a href="/online-courses">Online Courses</a>
+                        <a href="/appointment">Appointment</a>
+                        <a href="/my-classes">My Classes</a>
+                        <a href="/services">Services</a>
+                    </div>
+                    <div class="footer-section social-icons desktop fade-in-up">
+                        <a href="https://instagram.com" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="2rem"
+                                height="2rem">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.326 3.608 1.301.975.975 1.24 2.242 1.301 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.326 2.633-1.301 3.608-.975.975-2.242 1.24-3.608 1.301-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.326-3.608-1.301-.975-.975-1.24-2.242-1.301-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c-.062 1.366-.326-2.633 1.301-3.608.975-.975 2.242-1.24 3.608-1.301 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-1.453.066-2.758.378-3.822 1.442-1.064 1.064-1.376 2.369-1.442 3.822-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.066 1.453.378 2.758 1.442 3.822 1.064 1.064 2.369 1.376 3.822 1.442 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.453-.066 2.758-.378 3.822-1.442 1.064-1.064 1.376-2.369 1.442-3.822.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.066-1.453-.378-2.758-1.442-3.822-1.064-1.064-2.369-1.376-3.822-1.442-1.28-.058-1.688-.072-4.947-.072z" />
+                                <path
+                                    d="M12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.324c-2.297 0-4.162-1.865-4.162-4.162s1.865-4.162 4.162-4.162 4.162 1.865 4.162 4.162-1.865 4.162-4.162 4.162z" />
+                                <circle cx="18.406" cy="5.594" r="1.44" />
+                            </svg>
+                        </a>
+                        <a href="https://twitter.com" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="2rem"
+                                height="2rem">
+                                <path
+                                    d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124-4.09-.205-7.719-2.165-10.148-5.144-.422.722-.666 1.561-.666 2.475 0 1.708.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z" />
+                            </svg>
+                        </a>
+                        <a href="https://youtube.com" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="2rem"
+                                height="2rem">
+                                <path
+                                    d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="social-icons mobile fade-in-up">
+                    <a href="https://instagram.com" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1.5rem"
+                            height="1.5rem">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.326 3.608 1.301.975.975 1.24 2.242 1.301 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.326 2.633-1.301 3.608-.975.975-2.242 1.24-3.608 1.301-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.326-3.608-1.301-.975-.975-1.24-2.242-1.301-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c-.062 1.366-.326-2.633 1.301-3.608.975-.975 2.242-1.24 3.608-1.301 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-1.453.066-2.758.378-3.822 1.442-1.064 1.064-1.376 2.369-1.442 3.822-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.066 1.453.378 2.758 1.442 3.822 1.064 1.064 2.369 1.376 3.822 1.442 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.453-.066 2.758-.378 3.822-1.442 1.064-1.064 1.376-2.369 1.442-3.822.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.066-1.453-.378-2.758-1.442-3.822-1.064-1.064-2.369-1.376-3.822-1.442-1.28-.058-1.688-.072-4.947-.072z" />
+                            <path
+                                d="M12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.324c-2.297 0-4.162-1.865-4.162-4.162s1.865-4.162 4.162-4.162 4.162 1.865 4.162 4.162-1.865 4.162-4.162 4.162z" />
+                            <circle cx="18.406" cy="5.594" r="1.44" />
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1.5rem"
+                            height="1.5rem">
+                            <path
+                                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124-4.09-.205-7.719-2.165-10.148-5.144-.422.722-.666 1.561-.666 2.475 0 1.708.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z" />
+                        </svg>
+                    </a>
+                    <a href="https://youtube.com" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1.5rem"
+                            height="1.5rem">
+                            <path
+                                d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="copyright fade-in-up">
+                    Merkulove © Josy Templates All rights reserved Copyrights 2021
+                </div>
+            </div>
+        </footer>
+
+
+
+        <script src="/js/nav.js"></script>
+        <script src="/js/home.js"></script>
+</body>
+
 </html>
