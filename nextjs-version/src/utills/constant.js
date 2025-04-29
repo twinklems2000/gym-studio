@@ -19,7 +19,7 @@ export const fitnessData = [
 export const trainerData  = [
     {
       name: "John Doe",
-      about: "Certified fitness coach with 10 years of experience in strength training and nutrition.",
+      about: "Certified fitness coach with 10 years of experience in strength training and diet nutrition.",
       img: "/assets/trainer-john.jpg", 
     },
     {
